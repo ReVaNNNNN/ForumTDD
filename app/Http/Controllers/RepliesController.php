@@ -11,8 +11,15 @@ class RepliesController extends Controller
     {
         $this->middleware('auth');
     }
-    public function store(Thread $tread)
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(int $id)
     {
+        $tread = Thread::find($id);
+
         $tread->addReply([
             'body' => request('body'),
             'user_id' => auth()->id()
