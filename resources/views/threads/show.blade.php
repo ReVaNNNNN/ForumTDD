@@ -29,7 +29,7 @@
         @if (auth()->check())
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <form action="{{ route('add_reply_to_thread', $thread->id) }}" method="POST">
+                    <form action="{{ route('add_reply_to_thread', [$thread->channel->slug, $thread->id]) }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <textarea name="body" id="body" class="form-control my-4" placeholder="Have something to say?" rows="5"></textarea>

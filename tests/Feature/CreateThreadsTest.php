@@ -18,9 +18,11 @@ class CreateThreadsTest extends TestCase
         $this->expectException(AuthenticationException::class);
         $this->withoutExceptionHandling();
 
-        $thread = make('App\Thread');
+        $this->get('threads/create')
+            ->assertRedirect('/login');
 
-        $this->post('/threads', $thread->toArray());
+        $this->post('/threads')
+            ->assertRedirect('/login');;
     }
     
     /**
@@ -30,7 +32,7 @@ class CreateThreadsTest extends TestCase
     {
         $this->signIn();
 
-        $thread = make('App\Thread');
+        $thread = create('App\Thread');
 
         $this->post(route('store_thread'), $thread->toArray());
 

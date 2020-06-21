@@ -10,9 +10,13 @@ class ParticipateInForumTest extends TestCase
 {
     use DatabaseMigrations;
 
+    /**
+     * @test
+     */
     public function unauthenticated_user_may_not_add_replies()
     {
         $this->expectException(AuthenticationException::class);
+        $this->withoutExceptionHandling();
 
         $thread = create('App\Thread');
         $reply = create('App\Reply');
