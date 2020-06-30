@@ -33,7 +33,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="{{ route('all_threads') }}"> All threads</a>
+                        <li>
+                            <a class="nav-link" href="{{ route('all_threads') }}"> All threads</a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link" href="{{ route('create_thread') }}">Create thread</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-has-popup="true" aria-expanded="false">
+                                Channels <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach($channels as $channel)
+                                    <li><a href="{{ route('show_channel', $channel->slug) }}">{{$channel->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
