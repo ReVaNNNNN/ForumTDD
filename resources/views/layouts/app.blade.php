@@ -18,6 +18,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .level {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -47,6 +58,10 @@
                                         <a class="nav-link" href="{{ route('all_threads') . '?by=' . auth()->user()->name }}"> My threads</a>
                                     </li>
                                 @endif
+
+                                <li>
+                                    <a class="nav-link" href="{{ route('all_threads') . '?popular=1' }}"> Popular threads</a>
+                                </li>
                             </ul>
                         </li>
 
