@@ -15,12 +15,12 @@ class CreateFavoritesTable extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('favorited_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('favorited_id');
             $table->string('favorited_type', 50);
             $table->timestamps();
 
-            $table->unique(['user_id', 'favorite_id', 'favorited_type']);
+            $table->unique(['user_id', 'favorited_type']);
         });
     }
 
