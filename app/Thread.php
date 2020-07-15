@@ -15,6 +15,14 @@ class Thread extends Model
         static::addGlobalScope('replyCount', function ($builder) {
            $builder->withCount('replies');
         });
+
+        static::addGlobalScope('creator', function ($builder) {
+            $builder->with('creator');
+        });
+
+        static::addGlobalScope('channel', function ($builder) {
+            $builder->with('channel');
+        });
     }
 
     /**
